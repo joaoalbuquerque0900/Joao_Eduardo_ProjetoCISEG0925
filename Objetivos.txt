@@ -1,0 +1,41 @@
+Nome: StormBrainChat
+
+
+Servidor:
+
+dados a interceptar:
+
+- E-mails (filtra por domínios e validade)
+
+- Números de telefone 
+
+- Endereços IP 
+
+- Nomes completos 
+
+- Datas de nascimento 
+
+- Cartões de crédito
+
+- IBAN
+
+- NIF
+
+- Numero de identificação civil
+
+- Código Postal
+
+
+- perguntas suspeitas (Passwords, dados pessoais)
+
+
+
+Criar um sistema de recolha de logs, inspirado numa boa pratica.
+
+
+Cliente:
+
+
+
+
+
