@@ -19,7 +19,7 @@ try:
     clientsocket.send(mensagem_enviar.encode('utf-8'))
     print(f"Enviado: {mensagem_enviar}")
 
-    resposta=clientsocket.rcv(1024).decode('utf-8')
+    resposta=clientsocket.recv(1024).decode('utf-8')
     print(f"Recebido: {resposta}")
 
     time.sleep(1)
@@ -31,4 +31,3 @@ finally:
 
     clientsocket.close()
     print("Conexao fechada")
-    
