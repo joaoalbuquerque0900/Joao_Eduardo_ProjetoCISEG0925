@@ -7,27 +7,31 @@ target_host="127.0.0.1"
 
 clientsocket=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+while True:
 
-try:
+    try:
 
-    clientsocket.connect((target_host, target_port))
-    
-    print("Conectado ao servidor. Enviar mensagem...")
+        clientsocket.connect((target_host, target_port))
+        
+        print("Conectado ao servidor. Enviar mensagem...")
 
-    mensagem_enviar=input("Mensagem: ")
+        mensagem_enviar=input("Mensagem: ")
 
-    clientsocket.send(mensagem_enviar.encode('utf-8'))
-    print(f"Enviado: {mensagem_enviar}")
+        clientsocket.send(mensagem_enviar.encode('utf-8'))
+        print(f"Enviado: {mensagem_enviar}")
 
-    resposta=clientsocket.recv(1024).decode('utf-8')
-    print(f"Recebido: {resposta}")
+        resposta=clientsocket.recv(1024).decode('utf-8')
+        print(f"Recebido: {resposta}")
 
-    time.sleep(1)
+        
 
-except:
-    print("Erro: servidor inativo ou erro de comunicação")
+    except:
 
-finally:
+        print("Erro: servidor inativo ou erro de comunicação")
+        break
 
-    clientsocket.close()
-    print("Conexao fechada")
+    finally:
+
+        clientsocket.close()
+        print("Conexao fechada")
+        break
