@@ -4,6 +4,8 @@ import time
 import re
 
 clients=[]
+clients_lock=threading.Lock()
+
 host="127.0.0.1"
 port=12345
 
@@ -36,19 +38,28 @@ def dados_pessoais(texto): #funcao para detetar padroes
 
 def mensagem_broadcast(mensagem_compl, socket_envio): #garantir que as mensagens sao enviadas para todos os clients na lista client
 
-    for clientsocket in clients:
-        
-        if clientsocket!=socket_envio:
+    with clients_lock:
+
+        for clientsocket in clients:
             
-            try:
+            if clientsocket!=socket_envio:
+                
+                try:
 
-                clientsocket.send(mensagem_compl.encode('utf-8'))
+                    clientsocket.send(mensagem_compl.encode('utf-8'))
 
-            except:
+                except:
 
-                clientsocket.close() #se a mensagem nao for enviada o socket do client fecha e o client e removido da lista de clients.
-                if clientsocket in clients:
-                    clients.remove(clientsocket)
+                    pass
+
+def remover_client(clientsocket):
+
+    with clients_lock:
+
+        if clientsocket in clients:
+
+            clients.remove(clientsocket)
+            clientsocket.close()
 
 def gerir_client(clientsocket, clientaddress):
 
@@ -57,62 +68,74 @@ def gerir_client(clientsocket, clientaddress):
     try:
         while True:
 
-            mensagem=clientsocket.recv(1024).decode('utf-8') #buffer de 1024 para receber mensagem enviada pelo client
+            try:
+                
+                mensagem=clientsocket.recv(1024).decode('utf-8') #buffer de 1024 para receber mensagem enviada pelo client
 
-            if not mensagem or mensagem.lower()=="exit": #definir os criterios para sair do chat: mensagem vazia ou comando exit
+                if not mensagem or mensagem.lower()=="exit": #definir os criterios para sair do chat: mensagem vazia ou comando exit
 
-                print(f"Desconectado {clientaddress}")
+                    print(f"Desconectado {clientaddress}")
+                    break
+
+                print(f"{clientaddress[0]}:{clientaddress[1]} Enviou: {mensagem}") #identificacao do client pelo ip (clientaddress[0]) e pela porta (clientaddress[1])
+
+                mensagem_enviar=f"{clientaddress[0]} {mensagem}" #preparacao da mensagem para broadcast: com identificacao por ip e texto da mensagem definida pelo client
+                
+                if dados_pessoais(mensagem):
+
+                    clientsocket.send("Mensagem bloqueada. Atencao nao partilhe dados sensiveis".encode('utf-8'))
+
+                else:
+
+                    mensagem_broadcast(mensagem_enviar, clientsocket) #utilizacao da funcao mensagem broadcast que garante que todos os users recebem a mensagem
+            except ConnectionResetError:
+
+                print(f"Conexao perdida com {clientaddress}")
+                break
+            except Exception as e:
+                print(f"Ocorreu um erro com {clientaddress}: {e}")
                 break
 
-            print(f"{clientaddress[0]}:{clientaddress[1]} Enviou: {mensagem}") #identificacao do client pelo ip (clientaddress[0]) e pela porta (clientaddress[1])
+    finally:
+        remover_client(clientsocket)
+        print(f"Conexao fechada: {clientaddress}")
 
-            mensagem_enviar=f"{clientaddress[0]} {mensagem}" #preparacao da mensagem para broadcast: com identificacao por ip e texto da mensagem definida pelo client
-            
-            if dados_pessoais(mensagem):
-
-                clientsocket.send("Mensagem bloqueada. Atencao nao partilhe dados sensiveis".encode('utf-8'))
-
-            else:
-
-                mensagem_broadcast(mensagem_enviar, clientsocket) #utilizacao da funcao mensagem broadcast que garante que todos os users recebem a mensagem
-     
-    except:
-        pass
-
-    if clientsocket in clients: #apenas executado quando um dos criterios de saida é cumprido. fecha o socket do client e remove da lista de clients
-
-        clients.remove(clientsocket)
-
-    clientsocket.close()
-    
 def iniciar_server():
 
     serversocket=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        serversocket.bind((host,port)) # colocar em escuta
 
-    serversocket.bind((host,port)) # colocar em escuta
+        serversocket.listen(5) # estabelecer o limite de conexoes
+        print(f"Servidor em escuta")
 
-    serversocket.listen(5) # estabelecer o limite de conexoes
-    print(f"Servidor em escuta")
-
-    while True:
-
-        try:
+        while True:
 
             clientsocket, clientaddress=serversocket.accept()
+            
+            with clients_lock: #garantir que a lista clients e acedida de forma segura
+
+                clients.append(clientsocket)
+
             print(f"Conexao aceite: {clientaddress}")
-
-            clients.append(clientsocket)
-
             thread=threading.Thread(target=gerir_client, args=(clientsocket, clientaddress))
             thread.start() #iniciar uma thread para o client
+    
+    except KeyboardInterrupt:
+        print("Servidor a fechar...")
+    
+    except Exception as e:
 
-        except:
-            print("Ocorreu um erro.")
-            break
+        print(f"Ocorreu um erro no servidor: {e}")
 
-    time.sleep(5)
+    finally:
 
-    serversocket.close()
+        with clients_lock:
+            for clientsocket in clients:
+                clientsocket.close()
+            
+        serversocket.close()
+        print("Servidor fechado")
 
 
 if __name__ == "__main__":

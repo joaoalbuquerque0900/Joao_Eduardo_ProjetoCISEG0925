@@ -2,7 +2,7 @@ import socket
 import time
 import threading
 
-def receber_mensagens(clientsocket):
+def receber_mensagens(clientsocket): #funcao para receber mensagens do servidor
 
     while True:
         try:
@@ -22,7 +22,7 @@ def receber_mensagens(clientsocket):
         
     clientsocket.close()
 
-def iniciar_cliente():
+def iniciar_cliente(): #funcao para iniciar o cliente e conectar ao servidor
 
     target_port=12345
     target_host="127.0.0.1"
@@ -37,7 +37,7 @@ def iniciar_cliente():
         
         print("Conectado ao servidor. Para sair digite exit. Enviar mensagem...")
 
-        thread_receber=threading.Thread(target=receber_mensagens, args=(clientsocket,))
+        thread_receber=threading.Thread(target=receber_mensagens, args=(clientsocket,)) #thread para receber mensagens do servidor
         thread_receber.start()
 
         while True:
