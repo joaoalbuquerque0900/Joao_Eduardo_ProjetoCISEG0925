@@ -1,37 +1,70 @@
 import socket
 import time
+import threading
 
-target_port=12345
-target_host="127.0.0.1"
+def receber_mensagens(clientsocket):
+
+    while True:
+        try:
+            mensagem=clientsocket.recv(1024).decode('utf-8')
+            if mensagem:
+                print(f"\nMensagem recebida: {mensagem}\n")
+            else:
+                print("Conexão fechada pelo servidor.")
+                break
+        except OSError:
+
+            break
+
+        except Exception as e:
+            print(f"Ocorreu um erro: {e}")
+            break
+        
+    clientsocket.close()
+
+def iniciar_cliente():
+
+    target_port=12345
+    target_host="127.0.0.1"
 
 
-clientsocket=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    clientsocket=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-while True:
-
+ 
     try:
 
         clientsocket.connect((target_host, target_port))
         
-        print("Conectado ao servidor. Enviar mensagem...")
+        print("Conectado ao servidor. Para sair digite exit. Enviar mensagem...")
 
-        mensagem_enviar=input("Mensagem: ")
+        thread_receber=threading.Thread(target=receber_mensagens, args=(clientsocket,))
+        thread_receber.start()
 
-        clientsocket.send(mensagem_enviar.encode('utf-8'))
-        print(f"Enviado: {mensagem_enviar}")
+        while True:
 
-        resposta=clientsocket.recv(1024).decode('utf-8')
-        print(f"Recebido: {resposta}")
+            mensagem_enviar=input("Mensagem: ")
 
-        
+            if mensagem_enviar.lower()=="exit":
+                
+                break
 
-    except:
+            clientsocket.send(mensagem_enviar.encode('utf-8'))
+    
+    except ConnectionRefusedError:
 
-        print("Erro: servidor inativo ou erro de comunicação")
-        break
+        print("Erro: servidor inativo ou recusa de conexao")
+            
+    except Exception as e:
+            
+            print(f"Ocorreu um erro: {e}")
 
+            print("Erro: servidor inativo ou erro de comunicação")
+            
     finally:
 
         clientsocket.close()
         print("Conexao fechada")
-        break
+
+if __name__=="__main__":
+
+    iniciar_cliente()
