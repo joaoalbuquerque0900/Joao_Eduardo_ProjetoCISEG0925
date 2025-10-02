@@ -2,8 +2,18 @@ import socket
 import threading
 import time
 import re
+import logging
 
-clients=[]
+logging.basicConfig(
+    level=logging.INFO, # Nível mínimo para exibir mensagens
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("server.log"), # Para escrever num ficheiro
+        logging.StreamHandler()            # Para escrever na consola
+    ]
+)
+
+clients={}
 clients_lock=threading.Lock()
 
 host="127.0.0.1"
@@ -40,7 +50,7 @@ def mensagem_broadcast(mensagem_compl, socket_envio): #garantir que as mensagens
 
     with clients_lock:
 
-        for clientsocket in clients:
+        for clientsocket in list(clients.keys()):
             
             if clientsocket!=socket_envio:
                 
@@ -52,36 +62,44 @@ def mensagem_broadcast(mensagem_compl, socket_envio): #garantir que as mensagens
 
                     pass
 
-def remover_client(clientsocket):
-
-    with clients_lock:
-
-        if clientsocket in clients:
-
-            clients.remove(clientsocket)
-            clientsocket.close()
 
 def gerir_client(clientsocket, clientaddress):
 
-    print(f"Nova Conexão: {clientaddress}")
+    logging.info(f"Nova Conexão: {clientaddress}")
+    username=""
 
     try:
         while True:
 
             try:
+
+                username = clientsocket.recv(1024).decode('utf-8')
+                if not username:
+                    logging.warning(f"Conexão fechada pelo cliente {clientaddress} antes de enviar o nome de usuário.")
+                    return
                 
                 mensagem=clientsocket.recv(1024).decode('utf-8') #buffer de 1024 para receber mensagem enviada pelo client
 
+                with clients_lock:
+                    clients[clientsocket]=username  #associar o nome de user ao socket do client
+
+                logging.info(f"Usuário {username} conectado de {clientaddress}")
+
+                mensagem_entrada=f"{username} entrou no chat."
+                mensagem_broadcast(mensagem_entrada, clientsocket) #notificar os outros users que
+
+
                 if not mensagem or mensagem.lower()=="exit": #definir os criterios para sair do chat: mensagem vazia ou comando exit
 
-                    print(f"Desconectado {clientaddress}")
+                    logging.info(f"Desconectado {clientaddress}")
                     break
 
-                print(f"{clientaddress[0]}:{clientaddress[1]} Enviou: {mensagem}") #identificacao do client pelo ip (clientaddress[0]) e pela porta (clientaddress[1])
+                logging.info(f"{clientaddress[0]}:{clientaddress[1]} Enviou: {mensagem}") #identificacao do client pelo ip (clientaddress[0]) e pela porta (clientaddress[1])
 
-                mensagem_enviar=f"{clientaddress[0]} {mensagem}" #preparacao da mensagem para broadcast: com identificacao por ip e texto da mensagem definida pelo client
+                mensagem_enviar=f"{username} {mensagem}" #preparacao da mensagem para broadcast: com identificacao por ip e texto da mensagem definida pelo client
                 
                 if dados_pessoais(mensagem):
+                    logging.warning(f"Mensagem bloqueada de {clientaddress} por conter dados pessoais.")
 
                     clientsocket.send("Mensagem bloqueada. Atencao nao partilhe dados sensiveis".encode('utf-8'))
 
@@ -90,15 +108,24 @@ def gerir_client(clientsocket, clientaddress):
                     mensagem_broadcast(mensagem_enviar, clientsocket) #utilizacao da funcao mensagem broadcast que garante que todos os users recebem a mensagem
             except ConnectionResetError:
 
-                print(f"Conexao perdida com {clientaddress}")
+                logging.warning(f"Conexao perdida com {clientaddress}")
                 break
             except Exception as e:
-                print(f"Ocorreu um erro com {clientaddress}: {e}")
+                logging.error(f"Ocorreu um erro com {clientaddress}: {e}")
                 break
 
     finally:
-        remover_client(clientsocket)
-        print(f"Conexao fechada: {clientaddress}")
+        with clients_lock: # verifica so o username ainda esta na lista clients antes de remover
+            if clientsocket in clients:
+                username = clients.get(clientsocket, "Usuário desconhecido")
+                del clients[clientsocket]
+
+            mensagem_saida=f"{username} saiu do chat."
+            logging.info(mensagem_saida)
+            mensagem_broadcast(mensagem_saida, clientsocket)
+
+        clientsocket.close()
+        logging.info(f"Conexao fechada: {clientaddress} | Usuário: {username}")
 
 def iniciar_server():
 
@@ -107,7 +134,7 @@ def iniciar_server():
         serversocket.bind((host,port)) # colocar em escuta
 
         serversocket.listen(5) # estabelecer o limite de conexoes
-        print(f"Servidor em escuta")
+        logging.info(f"Servidor em escuta")
 
         while True:
 
@@ -115,18 +142,19 @@ def iniciar_server():
             
             with clients_lock: #garantir que a lista clients e acedida de forma segura
 
-                clients.append(clientsocket)
+                clients[clientsocket]=""
+                
 
-            print(f"Conexao aceite: {clientaddress}")
+            logging.info(f"Conexao aceite: {clientaddress}")
             thread=threading.Thread(target=gerir_client, args=(clientsocket, clientaddress))
             thread.start() #iniciar uma thread para o client
     
     except KeyboardInterrupt:
-        print("Servidor a fechar...")
+        logging.info("Servidor a fechar...")
     
     except Exception as e:
 
-        print(f"Ocorreu um erro no servidor: {e}")
+        logging.info(f"Ocorreu um erro no servidor: {e}")
 
     finally:
 
@@ -135,11 +163,9 @@ def iniciar_server():
                 clientsocket.close()
             
         serversocket.close()
-        print("Servidor fechado")
+        logging.info("Servidor fechado")
 
 
 if __name__ == "__main__":
 
     iniciar_server()
-
-# Teste commit

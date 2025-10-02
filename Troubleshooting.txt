@@ -1,0 +1,6 @@
+Inputs só são processados e logged? em intervalos de um
+Ou seja:
+- Input 1 (processado)
+- Input 2 (nao processado)
+- Input 3 (processado)
+- Input 4 (nao processado)

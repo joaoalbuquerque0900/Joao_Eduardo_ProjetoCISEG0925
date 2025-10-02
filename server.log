@@ -1,0 +1,43 @@
+2025-10-02 17:03:57,627 - INFO - Servidor em escuta
+2025-10-02 17:04:49,354 - INFO - Conexao aceite: ('127.0.0.1', 56365)
+2025-10-02 17:04:49,355 - INFO - Nova Conex�o: ('127.0.0.1', 56365)
+2025-10-02 17:04:58,915 - INFO - 127.0.0.1:56365 Enviou: ola
+2025-10-02 17:05:32,091 - INFO - 127.0.0.1:56365 Enviou: 911111111
+2025-10-02 17:05:32,091 - WARNING - Mensagem bloqueada de ('127.0.0.1', 56365) por conter dados pessoais.
+2025-10-02 17:09:16,990 - INFO - 127.0.0.1:56365 Enviou: 2222-777
+2025-10-02 17:09:16,990 - WARNING - Mensagem bloqueada de ('127.0.0.1', 56365) por conter dados pessoais.
+2025-10-02 18:47:52,579 - INFO - Servidor em escuta
+2025-10-02 18:48:01,264 - INFO - Ocorreu um erro no servidor: 'dict' object has no attribute 'append'
+2025-10-02 18:48:01,265 - INFO - Servidor fechado
+2025-10-02 18:49:53,081 - INFO - Servidor em escuta
+2025-10-02 18:50:08,741 - INFO - Ocorreu um erro no servidor: 'dict' object has no attribute 'append'
+2025-10-02 18:50:08,741 - INFO - Servidor fechado
+2025-10-02 18:51:11,859 - INFO - Servidor em escuta
+2025-10-02 18:51:16,219 - INFO - Ocorreu um erro no servidor: 'dict' object has no attribute 'append'
+2025-10-02 18:51:16,219 - INFO - Servidor fechado
+2025-10-02 18:53:28,821 - INFO - Servidor em escuta
+2025-10-02 18:53:34,263 - INFO - Conexao aceite: ('127.0.0.1', 57186)
+2025-10-02 18:53:34,264 - INFO - Nova Conex�o: ('127.0.0.1', 57186)
+2025-10-02 18:53:53,440 - INFO - Usu�rio edu conectado de ('127.0.0.1', 57186)
+2025-10-02 18:53:53,440 - INFO - 127.0.0.1:57186 Enviou: ola
+2025-10-02 18:55:53,008 - INFO - Usu�rio 2222-222 conectado de ('127.0.0.1', 57186)
+2025-10-02 18:55:53,008 - INFO - 127.0.0.1:57186 Enviou: 911111111
+2025-10-02 18:55:53,008 - WARNING - Mensagem bloqueada de ('127.0.0.1', 57186) por conter dados pessoais.
+2025-10-02 18:58:50,016 - WARNING - Conexao perdida com ('127.0.0.1', 57186)
+2025-10-02 18:58:50,016 - INFO - 2222-222 saiu do chat.
+2025-10-02 18:58:54,051 - INFO - Servidor em escuta
+2025-10-02 18:58:57,979 - INFO - Conexao aceite: ('127.0.0.1', 57216)
+2025-10-02 18:58:57,980 - INFO - Nova Conex�o: ('127.0.0.1', 57216)
+2025-10-02 18:59:56,067 - INFO - Usu�rio edu conectado de ('127.0.0.1', 57216)
+2025-10-02 18:59:56,067 - INFO - 127.0.0.1:57216 Enviou: ola
+2025-10-02 19:00:04,884 - INFO - Usu�rio ddd conectado de ('127.0.0.1', 57216)
+2025-10-02 19:00:04,885 - INFO - 127.0.0.1:57216 Enviou: eu
+2025-10-02 19:00:16,090 - INFO - Usu�rio d conectado de ('127.0.0.1', 57216)
+2025-10-02 19:00:16,090 - INFO - 127.0.0.1:57216 Enviou: d
+2025-10-02 19:00:17,373 - INFO - Usu�rio d conectado de ('127.0.0.1', 57216)
+2025-10-02 19:00:17,373 - INFO - 127.0.0.1:57216 Enviou: d
+2025-10-02 19:01:01,898 - INFO - Usu�rio 2222-222 conectado de ('127.0.0.1', 57216)
+2025-10-02 19:01:01,898 - INFO - 127.0.0.1:57216 Enviou: 2222-222
+2025-10-02 19:01:01,898 - WARNING - Mensagem bloqueada de ('127.0.0.1', 57216) por conter dados pessoais.
+
+#### Talvez não seja preciso ficar dentro do projeto, mas fica como teste e referência.

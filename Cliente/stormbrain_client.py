@@ -8,7 +8,7 @@ def receber_mensagens(clientsocket): #funcao para receber mensagens do servidor
         try:
             mensagem=clientsocket.recv(1024).decode('utf-8')
             if mensagem:
-                print(f"\nMensagem recebida: {mensagem}\n")
+                print(f"\n- {mensagem}\n")
             else:
                 print("Conexão fechada pelo servidor.")
                 break
@@ -34,6 +34,9 @@ def iniciar_cliente(): #funcao para iniciar o cliente e conectar ao servidor
     try:
 
         clientsocket.connect((target_host, target_port))
+
+        username=input("Digite seu nome de utilizador: ")
+        clientsocket.send(username.encode('utf-8'))
         
         print("Conectado ao servidor. Para sair digite exit. Enviar mensagem...")
 
@@ -42,7 +45,7 @@ def iniciar_cliente(): #funcao para iniciar o cliente e conectar ao servidor
 
         while True:
 
-            mensagem_enviar=input("Mensagem: ")
+            mensagem_enviar=input("> ")
 
             if mensagem_enviar.lower()=="exit":
                 
