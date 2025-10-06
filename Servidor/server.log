@@ -1,0 +1,23 @@
+2025-10-06 13:11:50,565 - INFO - Ocorreu um erro no servidor: [WinError 10048] Normalmente só é permitido uma utilização de cada endereço de socket (protocolo/endereço de rede/porta)
+2025-10-06 13:11:50,566 - INFO - Servidor fechado
+2025-10-06 13:12:37,409 - INFO - Servidor em escuta
+2025-10-06 13:12:40,185 - INFO - Conexao aceite: ('127.0.0.1', 55800)
+2025-10-06 13:12:40,188 - INFO - Nova Conexão: ('127.0.0.1', 55800)
+2025-10-06 13:12:44,717 - INFO - Conexao aceite: ('127.0.0.1', 55801)
+2025-10-06 13:12:44,718 - INFO - Nova Conexão: ('127.0.0.1', 55801)
+2025-10-06 13:12:49,415 - INFO - Usuário joao conectado de ('127.0.0.1', 55800)
+2025-10-06 13:12:52,423 - INFO - Usuário carlos conectado de ('127.0.0.1', 55801)
+2025-10-06 13:12:59,158 - INFO - 127.0.0.1:55801 - carlos: Enviou: oi
+2025-10-06 13:13:03,843 - INFO - 127.0.0.1:55800 - joao: Enviou: ola
+2025-10-06 13:13:10,381 - INFO - 127.0.0.1:55800 - joao: Enviou: tudo bem
+2025-10-06 13:13:21,858 - INFO - 127.0.0.1:55801 - carlos: Enviou: tudo e contigo
+2025-10-06 13:13:28,326 - INFO - 127.0.0.1:55800 - joao: Enviou: tambem obrigado
+2025-10-06 13:13:33,980 - INFO - 127.0.0.1:55801 - carlos: Enviou: que fazes
+2025-10-06 13:13:53,033 - INFO - 127.0.0.1:55800 - joao: Enviou: chillar e tu
+2025-10-06 13:14:02,000 - INFO - 127.0.0.1:55801 - carlos: Enviou: tambem chillo
+2025-10-06 13:14:22,371 - WARNING - Conexao perdida com ('127.0.0.1', 55801)
+2025-10-06 13:14:22,372 - INFO - carlos saiu do chat.
+2025-10-06 13:14:22,373 - INFO - Conexao fechada: ('127.0.0.1', 55801) | Usuário: carlos
+2025-10-06 13:14:25,555 - WARNING - Conexao perdida com ('127.0.0.1', 55800)
+2025-10-06 13:14:25,556 - INFO - joao saiu do chat.
+2025-10-06 13:14:25,556 - INFO - Conexao fechada: ('127.0.0.1', 55800) | Usuário: joao

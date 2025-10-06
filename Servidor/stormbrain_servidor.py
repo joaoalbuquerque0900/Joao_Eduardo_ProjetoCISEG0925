@@ -69,60 +69,63 @@ def gerir_client(clientsocket, clientaddress):
     username=""
 
     try:
+        username = clientsocket.recv(1024).decode('utf-8')
+        if not username:
+            logging.warning(f"Conexão fechada pelo cliente {clientaddress} antes de enviar o nome de usuário.")
+            clientsocket.close()
+            return
+            
+            mensagem=clientsocket.recv(1024).decode('utf-8') #buffer de 1024 para receber mensagem enviada pelo client
+
+        with clients_lock:
+            clients[clientsocket]=username  #associar o nome de user ao socket do client
+
+        logging.info(f"Usuário {username} conectado de {clientaddress}")
+
+        mensagem_entrada=f"{username} entrou no chat."
+        mensagem_broadcast(mensagem_entrada, clientsocket) #notificar os outros users que
+
         while True:
 
-            try:
+            mensagem=clientsocket.recv(1024).decode('utf-8')
+            if not mensagem or mensagem.lower()=="exit": #definir os criterios para sair do chat: mensagem vazia ou comando exit
 
-                username = clientsocket.recv(1024).decode('utf-8')
-                if not username:
-                    logging.warning(f"Conexão fechada pelo cliente {clientaddress} antes de enviar o nome de usuário.")
-                    return
-                
-                mensagem=clientsocket.recv(1024).decode('utf-8') #buffer de 1024 para receber mensagem enviada pelo client
-
-                with clients_lock:
-                    clients[clientsocket]=username  #associar o nome de user ao socket do client
-
-                logging.info(f"Usuário {username} conectado de {clientaddress}")
-
-                mensagem_entrada=f"{username} entrou no chat."
-                mensagem_broadcast(mensagem_entrada, clientsocket) #notificar os outros users que
-
-
-                if not mensagem or mensagem.lower()=="exit": #definir os criterios para sair do chat: mensagem vazia ou comando exit
-
-                    logging.info(f"Desconectado {clientaddress}")
-                    break
-
-                logging.info(f"{clientaddress[0]}:{clientaddress[1]} Enviou: {mensagem}") #identificacao do client pelo ip (clientaddress[0]) e pela porta (clientaddress[1])
-
-                mensagem_enviar=f"{username} {mensagem}" #preparacao da mensagem para broadcast: com identificacao por ip e texto da mensagem definida pelo client
-                
-                if dados_pessoais(mensagem):
-                    logging.warning(f"Mensagem bloqueada de {clientaddress} por conter dados pessoais.")
-
-                    clientsocket.send("Mensagem bloqueada. Atencao nao partilhe dados sensiveis".encode('utf-8'))
-
-                else:
-
-                    mensagem_broadcast(mensagem_enviar, clientsocket) #utilizacao da funcao mensagem broadcast que garante que todos os users recebem a mensagem
-            except ConnectionResetError:
-
-                logging.warning(f"Conexao perdida com {clientaddress}")
+                logging.info(f"Desconectado {clientaddress}")
                 break
-            except Exception as e:
-                logging.error(f"Ocorreu um erro com {clientaddress}: {e}")
-                break
+
+            logging.info(f"{clientaddress[0]}:{clientaddress[1]} - {username}: Enviou: {mensagem}") #identificacao do client pelo ip (clientaddress[0]) e pela porta (clientaddress[1])
+
+            mensagem_enviar=f"{username} {mensagem}" #preparacao da mensagem para broadcast: com identificacao por ip e texto da mensagem definida pelo client
+            
+            if dados_pessoais(mensagem):
+                logging.warning(f"Mensagem bloqueada de {username} por conter dados pessoais.")
+
+                clientsocket.send("Mensagem bloqueada. Atencao nao partilhe dados sensiveis".encode('utf-8'))
+
+            else:
+
+                mensagem_enviar=f"{username}: {mensagem}"
+                mensagem_broadcast(mensagem_enviar, clientsocket) #utilizacao da funcao mensagem broadcast que garante que todos os users recebem a mensagem
+                
+    except ConnectionResetError:
+
+        logging.warning(f"Conexao perdida com {clientaddress}")
+
+    except Exception as e:
+        logging.error(f"Ocorreu um erro com {clientaddress}: {e}")
+
 
     finally:
         with clients_lock: # verifica so o username ainda esta na lista clients antes de remover
             if clientsocket in clients:
-                username = clients.get(clientsocket, "Usuário desconhecido")
+                
                 del clients[clientsocket]
-
-            mensagem_saida=f"{username} saiu do chat."
-            logging.info(mensagem_saida)
-            mensagem_broadcast(mensagem_saida, clientsocket)
+        
+        if username:
+                
+                mensagem_saida=f"{username} saiu do chat."
+                logging.info(mensagem_saida)
+                mensagem_broadcast(mensagem_saida, clientsocket)
 
         clientsocket.close()
         logging.info(f"Conexao fechada: {clientaddress} | Usuário: {username}")
