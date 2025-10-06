@@ -21,3 +21,37 @@
 2025-10-06 13:14:25,555 - WARNING - Conexao perdida com ('127.0.0.1', 55800)
 2025-10-06 13:14:25,556 - INFO - joao saiu do chat.
 2025-10-06 13:14:25,556 - INFO - Conexao fechada: ('127.0.0.1', 55800) | Usuário: joao
+2025-10-06 14:56:37,422 - INFO - Servidor em escuta
+2025-10-06 14:56:57,769 - INFO - Conexao aceite: ('127.0.0.1', 52247)
+2025-10-06 14:56:57,771 - INFO - Nova Conexão: ('127.0.0.1', 52247)
+2025-10-06 14:57:17,036 - INFO - Conexao aceite: ('127.0.0.1', 52248)
+2025-10-06 14:57:17,038 - INFO - Nova Conexão: ('127.0.0.1', 52248)
+2025-10-06 14:57:20,883 - INFO - Usuário joao conectado de ('127.0.0.1', 52248)
+2025-10-06 14:57:26,943 - INFO - Usuário edu conectado de ('127.0.0.1', 52247)
+2025-10-06 14:57:35,178 - INFO - 127.0.0.1:52248 - joao: Enviou: ola
+2025-10-06 14:57:40,185 - INFO - 127.0.0.1:52247 - edu: Enviou: tudo bem
+2025-10-06 14:57:47,703 - INFO - 127.0.0.1:52248 - joao: Enviou: tudo e contigo
+2025-10-06 14:58:02,467 - INFO - 127.0.0.1:52247 - edu: Enviou: tambem
+2025-10-06 14:58:37,246 - INFO - Desconectado ('127.0.0.1', 52247)
+2025-10-06 14:58:37,247 - INFO - edu saiu do chat.
+2025-10-06 14:58:37,248 - INFO - Conexao fechada: ('127.0.0.1', 52247) | Usuário: edu
+2025-10-06 14:58:40,990 - INFO - Desconectado ('127.0.0.1', 52248)
+2025-10-06 14:58:40,991 - INFO - joao saiu do chat.
+2025-10-06 14:58:40,992 - INFO - Conexao fechada: ('127.0.0.1', 52248) | Usuário: joao
+2025-10-06 15:07:05,599 - INFO - Servidor em escuta
+2025-10-06 15:07:20,582 - INFO - Conexao aceite: ('127.0.0.1', 64836)
+2025-10-06 15:07:20,585 - INFO - Nova Conexão: ('127.0.0.1', 64836)
+2025-10-06 15:07:40,892 - INFO - Conexao aceite: ('127.0.0.1', 64837)
+2025-10-06 15:07:40,893 - INFO - Nova Conexão: ('127.0.0.1', 64837)
+2025-10-06 15:07:42,644 - INFO - Usuário edu conectado de ('127.0.0.1', 64837)
+2025-10-06 15:07:46,024 - INFO - Usuário joao conectado de ('127.0.0.1', 64836)
+2025-10-06 15:07:58,256 - INFO - 127.0.0.1:64837 - edu: Enviou: oi
+2025-10-06 15:08:03,573 - INFO - 127.0.0.1:64836 - joao: Enviou: oi
+2025-10-06 15:08:08,137 - INFO - 127.0.0.1:64837 - edu: Enviou: tudo bem?
+2025-10-06 15:08:12,816 - INFO - 127.0.0.1:64836 - joao: Enviou: tudo e contigo
+2025-10-06 15:08:15,149 - INFO - Desconectado ('127.0.0.1', 64836)
+2025-10-06 15:08:15,149 - INFO - joao saiu do chat.
+2025-10-06 15:08:15,150 - INFO - Conexao fechada: ('127.0.0.1', 64836) | Usuário: joao
+2025-10-06 15:08:18,385 - INFO - Desconectado ('127.0.0.1', 64837)
+2025-10-06 15:08:18,386 - INFO - edu saiu do chat.
+2025-10-06 15:08:18,386 - INFO - Conexao fechada: ('127.0.0.1', 64837) | Usuário: edu

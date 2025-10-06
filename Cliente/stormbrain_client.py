@@ -57,9 +57,15 @@ def iniciar_cliente():
     def enviar_mensagem(event=None):
 
         mensagem_para_enviar = caixa_mensagem.get()
+
         if mensagem_para_enviar:
+
+            exibir_mensagem(f"{username}: {mensagem_para_enviar}")
+            
             clientsocket.send(mensagem_para_enviar.encode('utf-8'))
+
             caixa_mensagem.delete(0, tk.END)
+            
             if mensagem_para_enviar.lower() == 'exit':
                 fechar_janela()
 
