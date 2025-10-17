@@ -100,7 +100,7 @@ def gerir_client(clientsocket, clientaddress):
                 with clients_lock: #sistema de strikes
 
                     clients[clientsocket]['strikes']+=1
-                    strikes_atuais=clients[clientsocket]['strike']
+                    strikes_atuais=clients[clientsocket]['strikes']
                 
                 if strikes_atuais>=3:
                     aviso_final="TERCEIRO STRIKE. Foi desconectado por ter atringido os 3 strikes por partilhar dados sensiveis"

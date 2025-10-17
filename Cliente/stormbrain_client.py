@@ -38,9 +38,11 @@ def iniciar_cliente():
                     fila_mensagens.put(mensagem_recebida)
                 else:
                     fila_mensagens.put("Conexão perdida com o servidor.")
+                    fila_mensagens.put("CLOSE_WINDOW")
                     break
             except:
                 fila_mensagens.put("Erro na conexão.")
+                fila_mensagens.put("CLOSE_WINDOW")
                 break
 
     def processar_fila():
