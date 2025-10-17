@@ -50,9 +50,16 @@ def iniciar_cliente():
         try:
             while not fila_mensagens.empty():
                 mensagem = fila_mensagens.get_nowait()
+                
+                if mensagem=="CLOSE_WINDOW":
+                    root.destroy()
+                    return            
+                                
                 exibir_mensagem(mensagem)
         finally:
-            root.after(100, processar_fila)
+            if root.winfo_exists():
+
+                root.after(100, processar_fila)
 
     def enviar_mensagem(event=None):
 

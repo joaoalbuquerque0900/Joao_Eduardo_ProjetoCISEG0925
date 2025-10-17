@@ -124,3 +124,57 @@
 2025-10-17 11:25:14,799 - INFO - Desconectado ('127.0.0.1', 54387)
 2025-10-17 11:25:14,799 - INFO - edu saiu do chat.
 2025-10-17 11:25:14,800 - INFO - Conexao fechada: ('127.0.0.1', 54387) | Usuário: edu
+2025-10-17 11:49:26,569 - INFO - Servidor em escuta
+2025-10-17 11:49:52,640 - INFO - Conexao aceite: ('127.0.0.1', 56294)
+2025-10-17 11:49:52,642 - INFO - Nova Conexão: ('127.0.0.1', 56294)
+2025-10-17 11:49:55,066 - INFO - Usuário joao conectado de ('127.0.0.1', 56294)
+2025-10-17 11:49:59,491 - INFO - Conexao aceite: ('127.0.0.1', 56295)
+2025-10-17 11:49:59,492 - INFO - Nova Conexão: ('127.0.0.1', 56295)
+2025-10-17 11:50:01,449 - INFO - Usuário edu conectado de ('127.0.0.1', 56295)
+2025-10-17 11:50:13,335 - INFO - 127.0.0.1:56295 - edu: Enviou: 911111111
+2025-10-17 11:50:13,336 - WARNING - Mensagem bloqueada de edu por conter dados pessoais.
+2025-10-17 11:50:13,337 - ERROR - Ocorreu um erro com ('127.0.0.1', 56295): 'strike'
+2025-10-17 11:50:13,338 - INFO - edu saiu do chat.
+2025-10-17 11:50:13,339 - INFO - Conexao fechada: ('127.0.0.1', 56295) | Usuário: edu
+2025-10-17 11:50:38,126 - INFO - 127.0.0.1:56294 - joao: Enviou: joao
+2025-10-17 11:51:36,278 - INFO - Desconectado ('127.0.0.1', 56294)
+2025-10-17 11:51:36,279 - INFO - joao saiu do chat.
+2025-10-17 11:51:36,280 - INFO - Conexao fechada: ('127.0.0.1', 56294) | Usuário: joao
+2025-10-17 11:57:04,775 - INFO - Servidor em escuta
+2025-10-17 11:57:09,041 - INFO - Conexao aceite: ('127.0.0.1', 50382)
+2025-10-17 11:57:09,044 - INFO - Nova Conexão: ('127.0.0.1', 50382)
+2025-10-17 11:57:19,037 - INFO - Usuário edu conectado de ('127.0.0.1', 50382)
+2025-10-17 11:57:21,840 - INFO - Conexao aceite: ('127.0.0.1', 50383)
+2025-10-17 11:57:21,843 - INFO - Nova Conexão: ('127.0.0.1', 50383)
+2025-10-17 11:57:25,312 - INFO - Usuário joao conectado de ('127.0.0.1', 50383)
+2025-10-17 11:57:32,404 - INFO - 127.0.0.1:50383 - joao: Enviou: oi
+2025-10-17 11:57:37,208 - INFO - 127.0.0.1:50382 - edu: Enviou: oi brother
+2025-10-17 11:57:41,334 - INFO - 127.0.0.1:50382 - edu: Enviou: 911111111
+2025-10-17 11:57:41,335 - WARNING - Mensagem bloqueada de edu por conter dados pessoais.
+2025-10-17 11:57:53,435 - INFO - 127.0.0.1:50382 - edu: Enviou: 182.168.12.12
+2025-10-17 11:57:53,436 - WARNING - Mensagem bloqueada de edu por conter dados pessoais.
+2025-10-17 11:57:59,511 - INFO - 127.0.0.1:50382 - edu: Enviou: asfasfaf@asfas.com
+2025-10-17 11:57:59,512 - WARNING - Mensagem bloqueada de edu por conter dados pessoais.
+2025-10-17 11:57:59,513 - WARNING - Utilizador 'edu' desconectado por atingir o terceiro strike
+2025-10-17 11:57:59,513 - INFO - edu saiu do chat.
+2025-10-17 11:57:59,514 - INFO - Conexao fechada: ('127.0.0.1', 50382) | Usuário: edu
+2025-10-17 12:00:40,026 - INFO - Servidor em escuta
+2025-10-17 12:01:02,801 - INFO - Conexao aceite: ('127.0.0.1', 49681)
+2025-10-17 12:01:02,805 - INFO - Nova Conexão: ('127.0.0.1', 49681)
+2025-10-17 12:01:05,131 - INFO - Usuário edu conectado de ('127.0.0.1', 49681)
+2025-10-17 12:01:10,483 - INFO - Conexao aceite: ('127.0.0.1', 49683)
+2025-10-17 12:01:10,485 - INFO - Nova Conexão: ('127.0.0.1', 49683)
+2025-10-17 12:01:12,775 - INFO - Usuário joao conectado de ('127.0.0.1', 49683)
+2025-10-17 12:01:22,594 - INFO - 127.0.0.1:49681 - edu: Enviou: oi
+2025-10-17 12:01:28,429 - INFO - 127.0.0.1:49681 - edu: Enviou: 911111111
+2025-10-17 12:01:28,430 - WARNING - Mensagem bloqueada de edu por conter dados pessoais.
+2025-10-17 12:01:34,071 - INFO - 127.0.0.1:49681 - edu: Enviou: 911111111
+2025-10-17 12:01:34,072 - WARNING - Mensagem bloqueada de edu por conter dados pessoais.
+2025-10-17 12:01:41,046 - INFO - 127.0.0.1:49681 - edu: Enviou: asfasfas@edu.com
+2025-10-17 12:01:41,046 - WARNING - Mensagem bloqueada de edu por conter dados pessoais.
+2025-10-17 12:01:41,047 - WARNING - Utilizador 'edu' desconectado por atingir o terceiro strike
+2025-10-17 12:01:41,048 - INFO - edu saiu do chat.
+2025-10-17 12:01:41,048 - INFO - Conexao fechada: ('127.0.0.1', 49681) | Usuário: edu
+2025-10-17 12:01:51,442 - WARNING - Conexao perdida com ('127.0.0.1', 49683)
+2025-10-17 12:01:51,443 - INFO - joao saiu do chat.
+2025-10-17 12:01:51,444 - INFO - Conexao fechada: ('127.0.0.1', 49683) | Usuário: joao
