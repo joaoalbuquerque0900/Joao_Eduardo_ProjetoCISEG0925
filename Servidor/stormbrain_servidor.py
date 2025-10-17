@@ -75,10 +75,8 @@ def gerir_client(clientsocket, clientaddress):
             clientsocket.close()
             return
             
-            mensagem=clientsocket.recv(1024).decode('utf-8') #buffer de 1024 para receber mensagem enviada pelo client
-
         with clients_lock:
-            clients[clientsocket]=username  #associar o nome de user ao socket do client
+            clients[clientsocket]={'username':username, 'strikes':0}  #associar o nome de user ao socket do client
 
         logging.info(f"Usuário {username} conectado de {clientaddress}")
 
@@ -88,19 +86,30 @@ def gerir_client(clientsocket, clientaddress):
         while True:
 
             mensagem=clientsocket.recv(1024).decode('utf-8')
+
             if not mensagem or mensagem.lower()=="exit": #definir os criterios para sair do chat: mensagem vazia ou comando exit
 
                 logging.info(f"Desconectado {clientaddress}")
                 break
 
             logging.info(f"{clientaddress[0]}:{clientaddress[1]} - {username}: Enviou: {mensagem}") #identificacao do client pelo ip (clientaddress[0]) e pela porta (clientaddress[1])
-
-            mensagem_enviar=f"{username} {mensagem}" #preparacao da mensagem para broadcast: com identificacao por ip e texto da mensagem definida pelo client
             
             if dados_pessoais(mensagem):
                 logging.warning(f"Mensagem bloqueada de {username} por conter dados pessoais.")
 
-                clientsocket.send("Mensagem bloqueada. Atencao nao partilhe dados sensiveis".encode('utf-8'))
+                with clients_lock: #sistema de strikes
+
+                    clients[clientsocket]['strikes']+=1
+                    strikes_atuais=clients[clientsocket]['strike']
+                
+                if strikes_atuais>=3:
+                    aviso_final="TERCEIRO STRIKE. Foi desconectado por ter atringido os 3 strikes por partilhar dados sensiveis"
+                    clientsocket.send(aviso_final.encode('utf-8'))
+                    logging.warning(f"Utilizador '{username}' desconectado por atingir o terceiro strike")
+                    break
+                else:
+                    aviso=f"MENSAGEM BLOQUEADA. Voce tem {strikes_atuais} strike(s). Ao terceiro, sera desconectado."
+                    clientsocket.send(aviso.encode('utf-8'))
 
             else:
 

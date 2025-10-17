@@ -1,5 +1,3 @@
-# cliente_tkinter_funcoes_pt.py
-
 import socket
 import threading
 import tkinter as tk

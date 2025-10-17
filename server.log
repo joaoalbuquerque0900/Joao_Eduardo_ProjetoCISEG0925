@@ -40,4 +40,20 @@
 2025-10-02 19:01:01,898 - INFO - 127.0.0.1:57216 Enviou: 2222-222
 2025-10-02 19:01:01,898 - WARNING - Mensagem bloqueada de ('127.0.0.1', 57216) por conter dados pessoais.
 
-#### Talvez nÃ£o seja preciso ficar dentro do projeto, mas fica como teste e referÃªncia.
+#### Talvez nÃ£o seja preciso ficar dentro do projeto, mas fica como teste e referÃªncia.2025-10-12 23:14:49,576 - INFO - Servidor em escuta
+2025-10-12 23:15:04,081 - INFO - Conexao aceite: ('127.0.0.1', 55880)
+2025-10-12 23:15:04,084 - INFO - Nova Conexão: ('127.0.0.1', 55880)
+2025-10-12 23:15:10,502 - INFO - Usuário joao conectado de ('127.0.0.1', 55880)
+2025-10-12 23:15:56,362 - INFO - Conexao aceite: ('127.0.0.1', 57935)
+2025-10-12 23:15:56,363 - INFO - Nova Conexão: ('127.0.0.1', 57935)
+2025-10-12 23:16:00,983 - INFO - Usuário raposo conectado de ('127.0.0.1', 57935)
+2025-10-12 23:16:50,377 - INFO - Desconectado ('127.0.0.1', 55880)
+2025-10-12 23:16:50,377 - INFO - joao saiu do chat.
+2025-10-12 23:16:50,378 - INFO - Conexao fechada: ('127.0.0.1', 55880) | Usuário: joao
+2025-10-12 23:16:50,923 - INFO - Conexao aceite: ('127.0.0.1', 56789)
+2025-10-12 23:16:50,924 - INFO - Nova Conexão: ('127.0.0.1', 56789)
+2025-10-12 23:16:53,636 - WARNING - Conexão fechada pelo cliente ('127.0.0.1', 56789) antes de enviar o nome de usuário.
+2025-10-12 23:16:53,637 - INFO - Conexao fechada: ('127.0.0.1', 56789) | Usuário: 
+2025-10-12 23:16:56,889 - INFO - Desconectado ('127.0.0.1', 57935)
+2025-10-12 23:16:56,890 - INFO - raposo saiu do chat.
+2025-10-12 23:16:56,890 - INFO - Conexao fechada: ('127.0.0.1', 57935) | Usuário: raposo

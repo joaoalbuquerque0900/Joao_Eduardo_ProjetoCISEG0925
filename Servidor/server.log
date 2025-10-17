@@ -55,3 +55,72 @@
 2025-10-06 15:08:18,385 - INFO - Desconectado ('127.0.0.1', 64837)
 2025-10-06 15:08:18,386 - INFO - edu saiu do chat.
 2025-10-06 15:08:18,386 - INFO - Conexao fechada: ('127.0.0.1', 64837) | Usuário: edu
+2025-10-12 23:16:41,359 - INFO - Ocorreu um erro no servidor: [WinError 10048] Normalmente só é permitido uma utilização de cada endereço de socket (protocolo/endereço de rede/porta)
+2025-10-12 23:16:41,361 - INFO - Servidor fechado
+2025-10-12 23:16:46,054 - INFO - Ocorreu um erro no servidor: [WinError 10048] Normalmente só é permitido uma utilização de cada endereço de socket (protocolo/endereço de rede/porta)
+2025-10-12 23:16:46,054 - INFO - Servidor fechado
+2025-10-12 23:17:00,350 - INFO - Ocorreu um erro no servidor: [WinError 10048] Normalmente só é permitido uma utilização de cada endereço de socket (protocolo/endereço de rede/porta)
+2025-10-12 23:17:00,351 - INFO - Servidor fechado
+2025-10-12 23:17:18,463 - INFO - Servidor em escuta
+2025-10-12 23:17:27,765 - INFO - Conexao aceite: ('127.0.0.1', 56791)
+2025-10-12 23:17:27,768 - INFO - Nova Conexão: ('127.0.0.1', 56791)
+2025-10-12 23:17:53,492 - INFO - Conexao aceite: ('127.0.0.1', 56792)
+2025-10-12 23:17:53,493 - INFO - Nova Conexão: ('127.0.0.1', 56792)
+2025-10-12 23:17:59,663 - INFO - Usuário raposo conectado de ('127.0.0.1', 56792)
+2025-10-12 23:18:03,692 - INFO - Usuário joao conectado de ('127.0.0.1', 56791)
+2025-10-12 23:18:06,284 - INFO - 127.0.0.1:56791 - joao: Enviou: oi
+2025-10-12 23:18:10,096 - INFO - 127.0.0.1:56792 - raposo: Enviou: oi
+2025-10-12 23:18:19,884 - INFO - 127.0.0.1:56791 - joao: Enviou: k fzs
+2025-10-12 23:18:27,494 - INFO - 127.0.0.1:56792 - raposo: Enviou: 911111111
+2025-10-12 23:18:27,495 - WARNING - Mensagem bloqueada de raposo por conter dados pessoais.
+2025-10-12 23:18:49,339 - INFO - 127.0.0.1:56792 - raposo: Enviou: nada de mais so partilho ibans nacionais PT50000056847723948
+2025-10-12 23:20:08,197 - INFO - Desconectado ('127.0.0.1', 56791)
+2025-10-12 23:20:08,198 - INFO - joao saiu do chat.
+2025-10-12 23:20:08,199 - INFO - Conexao fechada: ('127.0.0.1', 56791) | Usuário: joao
+2025-10-12 23:20:11,304 - INFO - Desconectado ('127.0.0.1', 56792)
+2025-10-12 23:20:11,304 - INFO - raposo saiu do chat.
+2025-10-12 23:20:11,305 - INFO - Conexao fechada: ('127.0.0.1', 56792) | Usuário: raposo
+2025-10-12 23:21:08,221 - INFO - Servidor em escuta
+2025-10-12 23:21:16,035 - INFO - Conexao aceite: ('127.0.0.1', 60984)
+2025-10-12 23:21:16,038 - INFO - Nova Conexão: ('127.0.0.1', 60984)
+2025-10-12 23:21:18,559 - INFO - Usuário joao conectado de ('127.0.0.1', 60984)
+2025-10-12 23:21:25,347 - INFO - 127.0.0.1:60984 - joao: Enviou: 2820-089
+2025-10-12 23:21:25,350 - WARNING - Mensagem bloqueada de joao por conter dados pessoais.
+2025-10-12 23:21:38,008 - INFO - 127.0.0.1:60984 - joao: Enviou: 275569454
+2025-10-12 23:21:38,008 - WARNING - Mensagem bloqueada de joao por conter dados pessoais.
+2025-10-12 23:21:43,896 - INFO - 127.0.0.1:60984 - joao: Enviou: asfasfasfasfas@asfasg.com
+2025-10-12 23:21:43,897 - WARNING - Mensagem bloqueada de joao por conter dados pessoais.
+2025-10-12 23:21:53,649 - INFO - 127.0.0.1:60984 - joao: Enviou: 999.999.999.999
+2025-10-12 23:21:59,977 - INFO - 127.0.0.1:60984 - joao: Enviou: 111.111.111.111
+2025-10-12 23:21:59,978 - WARNING - Mensagem bloqueada de joao por conter dados pessoais.
+2025-10-12 23:22:02,109 - INFO - 127.0.0.1:60984 - joao: Enviou: 1.1.1.1
+2025-10-12 23:22:02,110 - WARNING - Mensagem bloqueada de joao por conter dados pessoais.
+2025-10-12 23:22:08,422 - INFO - 127.0.0.1:60984 - joao: Enviou: 1-1-1-1
+2025-10-12 23:22:17,264 - INFO - 127.0.0.1:60984 - joao: Enviou: 15066780
+2025-10-12 23:22:25,794 - INFO - 127.0.0.1:60984 - joao: Enviou: 15066780 9xz9
+2025-10-12 23:22:43,786 - INFO - 127.0.0.1:60984 - joao: Enviou: Joao Albuquerque
+2025-10-12 23:22:43,786 - WARNING - Mensagem bloqueada de joao por conter dados pessoais.
+2025-10-12 23:22:53,413 - INFO - Desconectado ('127.0.0.1', 60984)
+2025-10-12 23:22:53,414 - INFO - joao saiu do chat.
+2025-10-12 23:22:53,415 - INFO - Conexao fechada: ('127.0.0.1', 60984) | Usuário: joao
+2025-10-17 11:23:06,626 - INFO - Servidor em escuta
+2025-10-17 11:23:28,550 - INFO - Conexao aceite: ('127.0.0.1', 54387)
+2025-10-17 11:23:28,552 - INFO - Nova Conexão: ('127.0.0.1', 54387)
+2025-10-17 11:23:45,090 - INFO - Conexao aceite: ('127.0.0.1', 54389)
+2025-10-17 11:23:45,096 - INFO - Nova Conexão: ('127.0.0.1', 54389)
+2025-10-17 11:23:47,915 - INFO - Usuário joao conectado de ('127.0.0.1', 54389)
+2025-10-17 11:23:51,487 - INFO - Usuário edu conectado de ('127.0.0.1', 54387)
+2025-10-17 11:24:17,186 - INFO - 127.0.0.1:54389 - joao: Enviou: oi
+2025-10-17 11:24:20,309 - INFO - 127.0.0.1:54387 - edu: Enviou: ola
+2025-10-17 11:24:29,854 - INFO - 127.0.0.1:54389 - joao: Enviou: asfafsasfas@asfas.com
+2025-10-17 11:24:29,855 - WARNING - Mensagem bloqueada de joao por conter dados pessoais.
+2025-10-17 11:24:43,526 - INFO - 127.0.0.1:54389 - joao: Enviou: 911111111
+2025-10-17 11:24:43,527 - WARNING - Mensagem bloqueada de joao por conter dados pessoais.
+2025-10-17 11:24:55,602 - INFO - 127.0.0.1:54389 - joao: Enviou: 192.168.1.1
+2025-10-17 11:24:55,603 - WARNING - Mensagem bloqueada de joao por conter dados pessoais.
+2025-10-17 11:25:11,776 - INFO - Desconectado ('127.0.0.1', 54389)
+2025-10-17 11:25:11,776 - INFO - joao saiu do chat.
+2025-10-17 11:25:11,777 - INFO - Conexao fechada: ('127.0.0.1', 54389) | Usuário: joao
+2025-10-17 11:25:14,799 - INFO - Desconectado ('127.0.0.1', 54387)
+2025-10-17 11:25:14,799 - INFO - edu saiu do chat.
+2025-10-17 11:25:14,800 - INFO - Conexao fechada: ('127.0.0.1', 54387) | Usuário: edu
